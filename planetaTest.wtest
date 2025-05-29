@@ -1,0 +1,25 @@
+import naveDePasajeros.*
+import naveDeCombate.*
+import planeta.Planeta
+
+
+describe "tests de planeta" {
+  test "cantidadDeNavesSobrecargadas funciona" {
+    // creo naves
+    const halconMilenario = new NaveDeCombate()
+    const tieFighter = new NaveDeCombate()
+    const estacionEspacial = new NaveDePasajeros(cantidadDePasajeros=10)
+
+    // creo el planeta y agrego naves
+    const endor = new Planeta()
+    endor.agregarNave(halconMilenario)
+    endor.agregarNave(tieFighter)
+    endor.agregarNave(estacionEspacial)
+
+    // hago que el halcon milenario se sobrecargue
+    halconMilenario.modo(modoAtaque)
+    halconMilenario.desplegarArmas()
+
+    assert.equals(2, endor.cantidadDeNavesSobrecargadas())
+  }
+}
