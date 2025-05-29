@@ -20,4 +20,9 @@ class NaveDeCarga {
     method estaExcedidaDeVelocidad() {
         return velocidad > 100000
     }
+
+    // Cuando estas naves reciben una amenaza se deshacen de toda su carga, dejándola vacía.
+    method recibeAmenaza() {
+        masaTransportada = 0
+    }
 }
