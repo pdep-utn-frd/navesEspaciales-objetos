@@ -25,6 +25,10 @@ class NaveDeCombate {
         return !modo.naveEstaInvisible(self)
     }
 
+    method escape() {
+        modo = new ModoEscape(potencia=100)
+    }
+
     method recibeAmenaza() {
         modo.recibeAmenaza(self) 
     }
@@ -51,5 +55,17 @@ object modoAtaque {
     method recibeAmenaza(unaNave) {
         unaNave.mensajeEmitido("Enemigo encontrado")
         unaNave.desplegarArmas()
+    }
+}
+
+// Aparece un nuevo modo para las naves de combate, llamado escape. En ese modo, a cada nave que se esta escapando le corresponde una potencia de escape determinada, que se disminuye a la mitad cuando la nave es amenazada estando en ese modo. 
+// Permitir que una nave de combate escape, lo que provoca que independientemente del estado anterior, pasa a estar en estado escape, con potencia de 100. 
+// ¿Qué otras cosas habría que tener en cuenta para que todo lo anterior siga funcionando? En caso de ser necesario, completarlo.
+
+class ModoEscape {
+    var property potencia = 0
+
+    method recibeAmenaza(unaNave) {
+        potencia = potencia/2
     }
 }
